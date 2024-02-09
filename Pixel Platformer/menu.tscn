@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bah0yk5r2dooq"]
+[gd_scene load_steps=18 format=3 uid="uid://bah0yk5r2dooq"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_35ygv"]
 [ext_resource type="Theme" uid="uid://r8r0votaa007" path="res://menu.tres" id="2_gfijf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Enemy2.gd" id="5_qrfuy"]
 [ext_resource type="PackedScene" uid="uid://x44sw2w7l54b" path="res://flying_enemy.tscn" id="6_shpve"]
 [ext_resource type="PackedScene" uid="uid://dntuactel48pk" path="res://stomp_enemy.tscn" id="7_mouxg"]
+[ext_resource type="Script" path="res://stomp_enemy_menu.gd" id="9_sf67f"]
 
 [sub_resource type="GDScript" id="GDScript_7jgqh"]
 
@@ -416,7 +417,7 @@ position = Vector2(141, 10)
 
 [node name="StompEnemy" parent="." instance=ExtResource("7_mouxg")]
 position = Vector2(274, 26)
-script = null
+script = ExtResource("9_sf67f")
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/PlayButton" to="MarginContainer/VBoxContainer" method="_on_play_button_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/PlayButton" to="MarginContainer/VBoxContainer" method="_on_play_button_mouse_exited"]

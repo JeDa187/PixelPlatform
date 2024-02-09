@@ -957,7 +957,15 @@ position = Vector2(1270, 52)
 position = Vector2(243, 153)
 
 [node name="Lock" parent="." instance=ExtResource("14_cdpu8")]
-position = Vector2(1386, 171)
+position = Vector2(1381, 171)
+
+[node name="Flag" type="Sprite2D" parent="."]
+top_level = true
+position = Vector2(1391, 162)
+texture = ExtResource("4_616kv")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(198, 90, 18, 36)
 
 [editable path="Player"]
 [editable path="SpikeEnemy"]
