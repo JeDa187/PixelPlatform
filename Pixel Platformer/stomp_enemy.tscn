@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=3 uid="uid://dntuactel48pk"]
+
+[ext_resource type="Texture2D" uid="uid://kdbfqang10w5" path="res://tilemap-characters_packed.png" id="1_c75de"]
+[ext_resource type="Script" path="res://stomp_enemy.gd" id="1_q3rbu"]
+[ext_resource type="PackedScene" uid="uid://wrr3f8xvbot5" path="res://hitbox.tscn" id="2_bg4cx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ca61"]
+atlas = ExtResource("1_c75de")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhbox"]
+atlas = ExtResource("1_c75de")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_74j6e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ca61")
+}],
+"loop": true,
+"name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhbox")
+}],
+"loop": true,
+"name": &"Rising",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7w2e"]
+size = Vector2(14, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_be32o"]
+size = Vector2(14, 17)
+
+[sub_resource type="Gradient" id="Gradient_u4dcv"]
+offsets = PackedFloat32Array(0.261194, 0.925373)
+colors = PackedColorArray(0.899258, 0.899258, 0.899258, 0.631373, 0.682353, 0.682353, 0.682353, 0.372549)
+
+[node name="StompEnemy" type="CharacterBody2D"]
+script = ExtResource("1_q3rbu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_74j6e")
+animation = &"Rising"
+
+[node name="Hitbox" parent="." instance=ExtResource("2_bg4cx")]
+position = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_j7w2e")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -9)
+target_position = Vector2(0, 12)
+collide_with_areas = true
+
+[node name="HoverTrembleTimer" type="Timer" parent="."]
+
+[node name="LandTimer" type="Timer" parent="."]
+
+[node name="StartHoverTimer" type="Timer" parent="."]
+
+[node name="HoverEndTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_be32o")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 1)
+emitting = false
+amount = 40
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+lifetime_randomness = 0.5
+fract_delta = false
+emission_shape = 3
+emission_rect_extents = Vector2(9.37, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 20)
+initial_velocity_min = 12.0
+initial_velocity_max = 20.0
+linear_accel_min = 10.0
+linear_accel_max = 25.0
+angle_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.756863, 0.756863, 0.756863, 0.392157)
+color_ramp = SubResource("Gradient_u4dcv")

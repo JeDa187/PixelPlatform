@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmasmfpd35e88"]
+
+[ext_resource type="Script" path="res://lock.gd" id="1_efkvj"]
+[ext_resource type="Texture2D" uid="uid://csk8qw5eiciir" path="res://tilemap_packed.png" id="2_plcoh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn0qv"]
+size = Vector2(12, 10)
+
+[node name="Lock" type="Area2D"]
+script = ExtResource("1_efkvj")
+
+[node name="LockedSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_plcoh")
+region_enabled = true
+region_rect = Rect2(198, 18, 18, 18)
+
+[node name="UnlockedSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_plcoh")
+region_enabled = true
+region_rect = Rect2(144, 18, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_dn0qv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

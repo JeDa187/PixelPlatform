@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://diroyxblp1j5h"]
+
+[ext_resource type="Texture2D" uid="uid://csk8qw5eiciir" path="res://tilemap_packed.png" id="1_p8eyw"]
+
+[node name="LadderTop" type="Sprite2D"]
+texture = ExtResource("1_p8eyw")
+region_enabled = true
+region_rect = Rect2(198, 39, 18, 9)

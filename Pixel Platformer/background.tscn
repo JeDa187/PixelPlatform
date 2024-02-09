@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://csnu5rcc653ao"]
+
+[ext_resource type="Texture2D" uid="uid://vf122uyqy8ql" path="res://tilemap-backgrounds_packed.png" id="1_l3sx0"]
+
+[node name="Background" type="Sprite2D"]
+position = Vector2(152, 91)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_l3sx0")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 72)

@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://dp4q44k86yr6r"]
+
+[ext_resource type="Texture2D" uid="uid://kdbfqang10w5" path="res://tilemap-characters_packed.png" id="1_fuqn1"]
+[ext_resource type="PackedScene" uid="uid://wrr3f8xvbot5" path="res://hitbox.tscn" id="2_ye4an"]
+
+[sub_resource type="Curve2D" id="Curve2D_0mtc7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -142, 32)
+}
+point_count = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgvoy"]
+radius = 9.0
+
+[sub_resource type="Animation" id="Animation_au7y3"]
+resource_name = "MoveAlongPathBounce"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_8fubj"]
+resource_name = "MoveAlongPathLoop"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_48y7k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yx7ld"]
+_data = {
+"MoveAlongPathBounce": SubResource("Animation_au7y3"),
+"MoveAlongPathLoop": SubResource("Animation_8fubj"),
+"RESET": SubResource("Animation_48y7k")
+}
+
+[node name="SpikeEnemy" type="Path2D"]
+curve = SubResource("Curve2D_0mtc7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="Enemy" type="Node2D" parent="PathFollow2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/Enemy"]
+texture = ExtResource("1_fuqn1")
+region_enabled = true
+region_rect = Rect2(192, 0, 24, 24)
+
+[node name="Hitbox" parent="PathFollow2D/Enemy" instance=ExtResource("2_ye4an")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Enemy/Hitbox"]
+shape = SubResource("CircleShape2D_fgvoy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yx7ld")
+}
+autoplay = "MoveAlongPathLoop"
