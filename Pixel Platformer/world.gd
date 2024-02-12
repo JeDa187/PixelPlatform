@@ -9,8 +9,7 @@ func _ready():
 	
 	if pause_menu:
 		pause_menu.hide()
-	else:
-		print("PauseMenu node not found. Check the node path.")
+
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
@@ -25,5 +24,4 @@ func pauseMenu():
 			pause_menu.show()
 			Engine.time_scale = 0
 		paused = !paused
-	else:
-		print("PauseMenu node not found. Cannot change pause state.")
+

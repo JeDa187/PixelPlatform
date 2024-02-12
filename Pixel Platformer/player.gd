@@ -7,7 +7,7 @@ var current_state = State.MOVE
 const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
 const MAX_JUMPS = 2
-const DOUBLE_JUMP_TIME_LIMIT = 0.3
+const DOUBLE_JUMP_TIME_LIMIT = 0.2
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jump_count = 0
@@ -27,13 +27,13 @@ func _ready():
 	start_position = global_position
 	ladder_check = $LadderCheck
 	add_to_group("player")
+	var key_status = get_node("Camera2D/UI/KeyStatus")
+	key_status.text = "Find the key!"
 	# Haetaan lukko käyttäen suhteellista polkua.
 	lock = get_node_or_null("../Lock")  # Olettaen että pelaaja ja lukko ovat saman 'world'-solmun lapsia.
+	var key_silhouette = get_node("Camera2D/UI/KeySilhouette")
+	key_silhouette.modulate = Color(0.5, 0.5, 0.5, 1)  # Aseta alustava harmaa väri
 
-	if lock:
-		print("Lock node found successfully.")
-	else:
-		print("Lock node not found: make sure the path is correct.")
 
 
 func _physics_process(delta):
@@ -113,5 +113,18 @@ func restart_game():
 
 func pick_up_key():
 	has_key = true
+	var key_silhouette = get_node("Camera2D/UI/KeySilhouette")
+	var key_filled = get_node("Camera2D/UI/KeyFilled")
+	var key_status = get_node("Camera2D/UI/KeyStatus")
+
+	if key_silhouette and key_filled:
+		key_silhouette.modulate = Color(1, 1, 1, 1)  # Palautetaan alkuperäinen väri
+		key_filled.visible = true
+		key_silhouette.visible = false
+
+	if key_status:
+		key_status.text = "You have found the key!"  # Päivitä teksti
+
 	if lock:
 		lock.unlock()
+

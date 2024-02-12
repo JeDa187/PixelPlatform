@@ -46,28 +46,35 @@ func _physics_process(delta):
 	# Handle state changes and animations
 	match state:
 		HOVER:
-			pass
+			# Ensure RayCast2D is enabled for other states
+			get_node("RayCast2D").enabled = true
 		FALL:
 			# Play falling animation and apply movement
 			animated_sprite.play("Falling")
 			global_position.x = start_position.x
 			global_position.y += fall_speed * delta
+			# Ensure RayCast2D is enabled to detect collision
+			get_node("RayCast2D").enabled = true
 			# Check for collision to switch to LAND state
 			if get_node("RayCast2D").is_colliding():
 				state = LAND
 				get_node("LandTimer").start()
 				emit_dust_effect()  # Emit dust effect when hitting the ground
 		LAND:
-			pass
+			# Ensure RayCast2D is enabled for other states
+			get_node("RayCast2D").enabled = true
 		RISE:
 			# Play rising animation and move up
 			animated_sprite.play("Rising")
 			global_position.y -= rise_speed * delta
+			# Disable RayCast2D when rising
+			get_node("RayCast2D").enabled = false
 			# Reset to HOVER state upon reaching the start position
 			if global_position.y <= start_position.y:
 				global_position.y = start_position.y
 				state = HOVER
 				get_node("HoverEndTimer").start()
+
 
 func _on_HoverEndTimer_timeout():
 	# Start trembling and wait for a timeout before falling
