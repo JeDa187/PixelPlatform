@@ -415,7 +415,7 @@ region_rect = Rect2(144, 72, 18, 18)
 [node name="FlyingEnemy" parent="." instance=ExtResource("6_shpve")]
 position = Vector2(141, 10)
 
-[node name="StompEnemy" parent="." instance=ExtResource("7_mouxg")]
+[node name="StompEnemy_Menu" parent="." instance=ExtResource("7_mouxg")]
 position = Vector2(274, 26)
 script = ExtResource("9_sf67f")
 

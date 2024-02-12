@@ -18,7 +18,11 @@ var ladder_check
 var has_key = false  # Tämä pitää kirjaa siitä, onko avain kerätty
 var lock # Tämä on viittaus lukkoon pelissä
 
+var camera_start_position: Vector2
+
+
 func _ready():
+	camera_start_position = get_viewport().get_camera_2d().global_position
 	animated_sprite = $AnimatedSprite2D
 	start_position = global_position
 	ladder_check = $LadderCheck
@@ -41,9 +45,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	# Tarkista, onko pelaaja kameran näkymäalueen alapuolella.
-	var camera = get_viewport().get_camera_2d()
-	if global_position.y > camera.global_position.y + get_viewport_rect().size.y:
+	# Tarkista, onko kamera siirtynyt yli 500 pikseliä alaspäin alkuperäisestä sijainnistaan
+	var camera_current_position = get_viewport().get_camera_2d().global_position
+	if camera_current_position.y - camera_start_position.y > 250:
 		restart_game()
 
 func process_movement(delta):

@@ -1,39 +1,55 @@
 extends CharacterBody2D
 
-# Tärinän asetukset
-var tremble_magnitude := 2  # Tärinäefektin voimakkuus
-var tremble_frequency := 0.1  # Kuinka usein tärinä tapahtuu sekunneissa
-var is_trembling := false
+# Tärinäefektin asetukset
+var tremble_magnitude := 0.3  # Tärinäefektin voimakkuus
+var is_trembling := false  # Tärinä alkaa pois päältä
 var original_position := Vector2()
-var min_idle_time := 0.5  # Minimi aika tärinöiden välillä
-var max_idle_time := 2.0  # Maksimi aika tärinöiden välillä
-var next_tremble_time := 0.0  # Seuraavan tärinän ajankohta
+var tremble_timer := Timer.new()  # Ajastin tärinän käyttöön
+var stop_tremble_timer := Timer.new()  # Ajastin tärinän pysäyttämiseen
+var animated_sprite: AnimatedSprite2D
 
 func _ready():
-	original_position = position
-	start_tremble_timer()
+	original_position = global_position  # Tallennetaan alkuperäinen positio
+	animated_sprite = $AnimatedSprite2D  # Oletetaan, että AnimatedSprite2D on lapsisolmu
+	setup_timers()
 
-func start_tremble_timer():
-	var idle_time = randf() * (max_idle_time - min_idle_time) + min_idle_time
-	var tremble_timer = Timer.new()
-	tremble_timer.set_wait_time(idle_time)
-	tremble_timer.set_one_shot(false)  # Jatkaa toistoa
+func setup_timers():
+	# Asetetaan ajastin tärinän käynnistämiseen
+	tremble_timer.wait_time = 2
+	tremble_timer.one_shot = true
 	add_child(tremble_timer)
-	tremble_timer.connect("timeout", Callable(self, "_on_tremble_timer_timeout"))
+	tremble_timer.connect("timeout", Callable(self, "start_tremble"))
+
+	# Asetetaan ajastin tärinän pysäyttämiseen
+	stop_tremble_timer.wait_time = 2
+	stop_tremble_timer.one_shot = true
+	add_child(stop_tremble_timer)
+	stop_tremble_timer.connect("timeout", Callable(self, "stop_tremble"))
+
+	# Käynnistetään ensimmäinen ajastin odottamaan tärinän aloittamista
 	tremble_timer.start()
 
-func _on_tremble_timer_timeout():
-	if not is_trembling:
-		is_trembling = true
-		await get_tree().create_timer(randf() * 1.5 + 0.5).timeout  # 0.5 - 2.0 sekunnin satunnainen viive
-		is_trembling = false
+func start_tremble():
+	is_trembling = true
+	animated_sprite.play("Falling")  # Vaihda animaatio tärinän ajaksi
+	stop_tremble_timer.start()
+
+func stop_tremble():
+	is_trembling = false
+	animated_sprite.play("Rising")  # Palauta alkuperäinen animaatio, kun tärinä päättyy
+	tremble_timer.start()
+
+func _on_TrembleTimer_timeout():
+	pass
 
 func _process(delta):
-	if is_trembling and OS.get_ticks_msec() > next_tremble_time:
+	if is_trembling:
 		apply_tremble()
-		next_tremble_time = OS.get_ticks_msec() + tremble_frequency * 1000
+	else:
+		# Palauta alkuperäinen positio, kun tärinä ei ole käynnissä
+		global_position = original_position
 
 func apply_tremble():
 	var tremble_x = (randf() * 2 - 1) * tremble_magnitude
 	var tremble_y = (randf() * 2 - 1) * tremble_magnitude
-	position = original_position + Vector2(tremble_x, tremble_y)
+	global_position = original_position + Vector2(tremble_x, tremble_y)
