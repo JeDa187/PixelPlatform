@@ -735,6 +735,7 @@ position = Vector2(-20.87, 87)
 
 [node name="Camera2D" parent="Player" index="0"]
 zoom = Vector2(0.8, 0.8)
+limit_left = -50
 
 [node name="PauseMenu" parent="Player/Camera2D" index="0" instance=ExtResource("16_o6pdk")]
 scale = Vector2(2, 2)
