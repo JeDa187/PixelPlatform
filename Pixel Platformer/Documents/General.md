@@ -75,10 +75,10 @@ Vaikka projekti alkoi käyttäen @HeartBeastin tarjoamaa tutoriaalia, pelin kehi
 
 Jokainen pelin osa-alue on jaettu omaksi skriptikseen, mikä helpottaa projektin hallintaa ja mahdollistaa modulaarisen kehitystyön. Skriptien nimet ovat kuvaavia ja vastaavat niiden toiminnallisuutta pelissä:
 
-- `enemy.gd` & `Enemy2.gd`: Kontrolloivat "Ground Enemy" -vihollisen toimintaa sekä pelissä että päävalikossa (`Enemy2.gd`).
-- `hitbox.gd`: Määrittelee osumatunnistuksen (Hitboxin) pelaajan ja muiden pelin objektien välillä.
-- `key_area.gd`: Käsittelee avaimen keräämisen logiikkaa ja sen vaikutusta pelin kulkuun.
-- `Ladder.gd`: Tarjoaa kiipeämismekaniikan tikapuita tai muita kiipeiltäviä pintoja varten.
+-[[ `enemy.gd`]] & [[`Enemy2.gd`]]: Kontrolloivat "Ground Enemy" -vihollisen toimintaa sekä pelissä että päävalikossa (`Enemy2.gd`).
+- [[`hitbox.gd`]]: Määrittelee osumatunnistuksen (Hitboxin) pelaajan ja muiden pelin objektien välillä.
+- [[`key_area.gd`]]: Käsittelee avaimen keräämisen logiikkaa ja sen vaikutusta pelin kulkuun.
+- [[`Ladder.gd`]]: Tarjoaa kiipeämismekaniikan tikapuita tai muita kiipeiltäviä pintoja varten.
 - `lock.gd`: Sisältää lukon avaamisen toiminnallisuuden, kun pelaaja on kerännyt avaimen.
 - `menu.gd`: Vastaa päävalikon toiminnoista ja siirtymisestä pelin eri tilojen välillä.
 - `pauseMenu.gd`: Hallinnoi pelin taukotilan toimintaa ja valikkoa.

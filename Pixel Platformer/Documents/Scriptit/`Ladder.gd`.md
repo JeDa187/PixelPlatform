@@ -1,0 +1,1 @@
+Tämä Skripti ei sisällä logiikkaa vaan tikapuiden loggiikka päätettiin siirtää pelaaja skriptiin.
