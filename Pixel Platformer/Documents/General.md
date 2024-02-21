@@ -79,12 +79,12 @@ Jokainen pelin osa-alue on jaettu omaksi skriptikseen, mikä helpottaa projektin
 - [[`hitbox.gd`]]: Määrittelee osumatunnistuksen (Hitboxin) pelaajan ja muiden pelin objektien välillä.
 - [[`key_area.gd`]]: Käsittelee avaimen keräämisen logiikkaa ja sen vaikutusta pelin kulkuun.
 - [[`Ladder.gd`]]: Tarjoaa kiipeämismekaniikan tikapuita tai muita kiipeiltäviä pintoja varten.
-- `lock.gd`: Sisältää lukon avaamisen toiminnallisuuden, kun pelaaja on kerännyt avaimen.
-- `menu.gd`: Vastaa päävalikon toiminnoista ja siirtymisestä pelin eri tilojen välillä.
-- `pauseMenu.gd`: Hallinnoi pelin taukotilan toimintaa ja valikkoa.
-- `player.gd`: On pelaajan hahmon ohjauksen ydin, sisältäen liikkeen, hypyn ja tuplahypyn logiikan.
-- `stomp_enemy.gd` & `stomp_enemy_menu.gd`: Kontrolloivat "stomp enemy" -vihollisen toimintaa sekä pelissä että päävalikossa (`stomp_enemy_menu.gd`).
-- `world.gd`: Pitää sisällään pausemenun rakenteen ja toimii pelimaailman "ohjaajana".
+- [[`lock.gd`]]: Sisältää lukon avaamisen toiminnallisuuden, kun pelaaja on kerännyt avaimen.
+- [[`menu.gd`]]: Vastaa päävalikon toiminnoista ja siirtymisestä pelin eri tilojen välillä.
+- [[`pauseMenu.gd`]]: Hallinnoi pelin taukotilan toimintaa ja valikkoa.
+- [[`player.gd`]]: On pelaajan hahmon ohjauksen ydin, sisältäen liikkeen, hypyn ja tuplahypyn logiikan.
+- [[`stomp_enemy.gd`]] & [[`stomp_enemy_menu.gd`]]: Kontrolloivat "stomp enemy" -vihollisen toimintaa sekä pelissä että päävalikossa (`stomp_enemy_menu.gd`).
+- [[`world.gd`]]: Pitää sisällään pausemenun rakenteen ja toimii pelimaailman "ohjaajana".
 
 ## Modulaarinen Rakenne ja Yhteistyö
 
