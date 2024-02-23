@@ -2,7 +2,7 @@
 
 ## Pelin Kuvaus
 
-"PixelPlatformer" on yksitasoinen tasohyppelypeli, joka vie pelaajat värikkääseen ja dynaamiseen pixelart maailmaan. Pelin keskeinen mekaniikka perustuu perinteiseen tasohyppelypelien konseptiin, jossa pelaajan ohjaama hahmo navigoi erilaisten esteiden ja vihollisten läpi tavoitteenaan löytää avain, joka avaa tien pelin loppuun. Pelin grafiikka on retrohenkinen, mikä tuo nostalgista viehätystä ja vetoaa sekä vanhoihin että uusiin pelaajiin.
+"PixelPlatformer" on tasohyppelypeli, joka vie pelaajat värikkääseen ja dynaamiseen pixelart maailmaan. Pelin keskeinen mekaniikka perustuu perinteiseen tasohyppelypelien konseptiin, jossa pelaajan ohjaama hahmo navigoi erilaisten esteiden ja vihollisten läpi tavoitteenaan löytää avain, joka avaa tien pelin loppuun. Pelin grafiikka on retrohenkinen, mikä tuo nostalgista viehätystä ja vetoaa sekä vanhoihin että uusiin pelaajiin.
 
 ## Pelin Tavoite
 
@@ -25,7 +25,7 @@ Pelitaso sisältää erilaisia esteitä, kuten piikit, jotka vahingoittavat pela
 
 ## Viholliset
 
-Pelin viholliset ovat suunniteltu tarjoamaan erityyppisiä haasteita. Ilmassa liikkuvat piikkipallot ja tietyllä reitillä lentävät linnut ovat esimerkkejä vihollisista, jotka pelaajan on opittava tunnistamaan ja väistämään. Pelissä on myös maassa partioivia vihollisia joita pelaajan on väistettävä. Erityisen maininnan ansaitsee "stomp enemy", liikkumaton palikka, joka alkaa täristä ennen kuin se putoaa yrittäen murskata pelaajan. Jos pelaaja jää sen alle, pelaajahahmo kuolee, mutta jos stomp enemy ei osu pelaajaan, se luo pölypilven (partikkeliefekti) ja nousee hitaasti takaisin ylös. Pelaajat voivat hyödyntää stomp enemyä "hissinä" hyppäämällä sen päälle päästäkseen korkeammille tasoille, joihin tavallisella tai tuplahypyllä ei ylletä. Tämä lisää peliin uuden taktisen ulottuvuuden ja antaa pelaajalle lisää keinoja navigoida pelimaailmassa.
+Pelin viholliset ovat suunniteltu tarjoamaan erityyppisiä haasteita. Ilmassa liikkuvat piikkipallot ja tietyllä reitillä lentävät linnut ovat esimerkkejä vihollisista, jotka pelaajan on opittava tunnistamaan ja väistämään. Pelissä on myös maassa partioivia vihollisia joita pelaajan on väistettävä. Erityisen maininnan ansaitsee "stomp enemy", ilmassa leijuva palikka, joka alkaa täristä ennen kuin se putoaa yrittäen murskata pelaajan. Jos pelaaja jää sen alle, pelaajahahmo kuolee, mutta jos stomp enemy ei osu pelaajaan, se luo pölypilven (partikkeliefekti) ja nousee hitaasti takaisin ylös. Pelaajat voivat hyödyntää stomp enemyä "hissinä" hyppäämällä sen päälle päästäkseen korkeammille tasoille, joihin tavallisella tai tuplahypyllä ei ylletä. Tämä lisää peliin uuden taktisen ulottuvuuden ja antaa pelaajalle lisää keinoja navigoida pelimaailmassa.
 
 -----
 # 3. Tason Suunnittelu
@@ -52,7 +52,7 @@ Esteet ja viholliset on sijoitettu tarkkaan harkiten niin, että ne haastavat pe
 
 # 4. Graafinen Suunnittelu
 
-"PixelPlatformerin" visuaalinen identiteetti pohjautuu @HeartBeastin tarjoamaan assettipakettiin, jonka grafiikat ovat vapaasti käytettävissä. Tämä assettipaketti sisältää kattavan valikoiman spriteja ja tekstuuritaustaa, joka on suunniteltu noudattamaan klassisen pikselitaiteen estetiikkaa.
+"PixelPlatformerin" visuaalinen identiteetti pohjautuu sisälläntuottaja @HeartBeastin tarjoamaan assettipakettiin, jonka grafiikat ovat vapaasti käytettävissä. Tämä assettipaketti sisältää kattavan valikoiman spriteja ja tekstuuritaustaa, joka on suunniteltu noudattamaan klassisen pikselitaiteen estetiikkaa.
 
 ## Assettipaketin Hyödyntäminen
 
@@ -73,7 +73,7 @@ Vaikka projekti alkoi käyttäen @HeartBeastin tarjoamaa tutoriaalia, pelin kehi
 
 ## Skriptien Yleiskatsaus
 
-Jokainen pelin osa-alue on jaettu omaksi skriptikseen, mikä helpottaa projektin hallintaa ja mahdollistaa modulaarisen kehitystyön. Skriptien nimet ovat kuvaavia ja vastaavat niiden toiminnallisuutta pelissä:
+Jokainen pelin osa-alue on jaettu omaksi skriptikseen, mikä helpottaa projektin hallintaa ja mahdollistaa modulaarisen kehitystyön:
 
 -[[ `enemy.gd`]] & [[`Enemy2.gd`]]: Kontrolloivat "Ground Enemy" -vihollisen toimintaa sekä pelissä että päävalikossa (`Enemy2.gd`).
 - [[`hitbox.gd`]]: Määrittelee osumatunnistuksen (Hitboxin) pelaajan ja muiden pelin objektien välillä.
@@ -92,7 +92,7 @@ Skriptien modulaarinen rakenne mahdollistaa helpon skaalauksen ja yhteistyön. K
 
 ## Selostukset
 
-Jokaisesta skriptistä annetaan tarkka selostus, joka sisältää niiden toiminnallisuuden yksityiskohtaiset kuvaukset, käytetyt metodit ja niiden vaikutukset pelin kokonaisvaltaiseen toimintaan. Tämä tieto auttaa ymmärtämään, miten eri pelin osaset toimivat yhteen luoden sujuvan ja viihdyttävän pelikokemuksen.
+Jokaisesta skriptistä on annettu erikseen tarkka selostus, joka sisältää niiden toiminnallisuuden yksityiskohtaiset kuvaukset, käytetyt metodit ja niiden vaikutukset pelin kokonaisvaltaiseen toimintaan. Tämä tieto auttaa ymmärtämään, miten eri pelin osaset toimivat yhteen luoden sujuvan ja viihdyttävän pelikokemuksen.
 
 -----
 
@@ -128,4 +128,4 @@ Peliprojektin web-versio tullaan julkaisemaan GitHub Pages -alustalla, mikä tar
 
 ## Jatkokehitys
 
-Vaikka "Pixelpeliseikkailu" on ensisijaisesti harjoittelu projekti, jatkokehityksen mahdollisuudet pidetään avoimina. Palautteen ja kokemuksen pohjalta voidaan harkita pelin laajentamista, esimerkiksi uusien tasojen, mekaniikkojen tai tarinaelementtien lisäämistä. Jatkokehitys voi sisältää myös koodin refaktorointia, suorituskyvyn parantamista ja uusien ominaisuuksien kehittämistä, jotka rikastuttavat pelikokemusta ja oppimisprosessia.
+Vaikka "Pixelpeliseikkailu" on ensisijaisesti harjoittelu projekti. Palautteen ja kokemuksen pohjalta voidaan harkita pelin laajentamista, esimerkiksi uusien tasojen, mekaniikkojen tai tarinaelementtien lisäämistä. Jatkokehitys voi sisältää myös koodin refaktorointia, suorituskyvyn parantamista ja uusien ominaisuuksien kehittämistä, jotka rikastuttavat pelikokemusta ja oppimisprosessia.

@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "6fa086c845474a3b",
+        "id": "96a5e0fe7283c00e",
         "type": "tabs",
         "children": [
           {
-            "id": "4a392de0c8167824",
+            "id": "52248f8c302155b6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "General.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "General.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "General.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "General.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,11 +138,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4a392de0c8167824",
+  "active": "52248f8c302155b6",
   "lastOpenFiles": [
+    "General.md",
     "Scriptit/`world.gd`.md",
     "Scriptit/`pauseMenu.gd`.md",
-    "General.md",
     "Scriptit/`stomp_enemy_menu.gd`.md",
     "Scriptit/`stomp_enemy.gd`.md",
     "Scriptit/`player.gd`.md",
